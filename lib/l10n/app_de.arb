@@ -1,0 +1,16 @@
+{
+    "result": "{name} ist {years} Jahre alt.",
+    "@result": {
+        "description": "The result of the calculation.",
+        "placeholders": {
+            "name": {
+                "description": "The name of the person.",
+                "type": "String"
+            },
+            "years": {
+                "description": "The age of the person.",
+                "type": "num"
+            }
+        }
+    }
+}

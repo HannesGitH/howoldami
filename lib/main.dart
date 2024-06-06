@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:howoldami/misc/locale.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,6 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: stdLocalizationDelegates,
+      supportedLocales: supportedLocales,
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
