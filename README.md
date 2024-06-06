@@ -1,16 +1,9 @@
 # howoldami
 
-A new Flutter project.
+A new Flutter project showing the expected age of a given name (for neon).
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### dev env
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+normally one could simply run `nix develop` to get a shell with all the necessary tools, but for some weird reason, on my machine ncurses for i686 does not build so I override the `nixpkgs` with my custom one via `nix develop --no-write-lock-file --override-input  nixpkgs /home/hannes/Repos/nixpkgs`

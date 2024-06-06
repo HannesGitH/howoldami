@@ -1,5 +1,6 @@
 {
   inputs = {
+    # nixpkgs.url = "github:HannesGitH/nixpkgs";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
@@ -23,14 +24,16 @@
 
       android-data = {
         abiVersion = "x86_64";
-        platformVersion = "34";
+        platformVersion = "33";
       };
 
-      android = forAllSystems (system: spkgs.${system}.androidenv.composeAndroidPackages {
-        buildToolsVersions = [ "28.0.3" "30.0.3" ];
-        platformVersions = [ "28" "33" "31" android-data.platformVersion ];
-        abiVersions = [ "armeabi-v7a" "arm64-v8a" android-data.abiVersion ];
-      });
+      # android = forAllSystems (system: spkgs.${system}.androidenv.composeAndroidPackages {
+      #   buildToolsVersions = [ "30.0.3" ];
+      #   platformVersions = [ "28" "31" android-data.platformVersion ];
+      #   abiVersions = [ "armeabi-v7a" "arm64-v8a" android-data.abiVersion ];
+      # });
+
+      android = forAllSystems (system: spkgs.${system}.androidenv.androidPkgs_9_0);
 
       packages = forAllSystems (system:  rec {
         avd = spkgs.${system}.androidenv.emulateApp {
