@@ -43,6 +43,12 @@ dependencies:
     sdk: flutter
   intl: any
 
+  neighboring_countries:
+    path: ../../neighboring_countries
+    # git:
+    #   url: https://github.com/hannesgith/neighboring_countries.git
+    #   ref: main
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

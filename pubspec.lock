@@ -416,6 +416,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.4"
+  neighboring_countries:
+    dependency: "direct main"
+    description:
+      path: "../../neighboring_countries"
+      relative: true
+    source: path
+    version: "1.0.0"
   package_config:
     dependency: transitive
     description:
