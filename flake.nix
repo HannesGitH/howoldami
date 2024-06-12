@@ -43,6 +43,12 @@
           systemImageType = "google_apis_playstore";
           # deviceName = "test-emulator";
         };
+
+        linuxFHS = spkgs.${system}.buildFHSUserEnv {
+          name = "linux-fhs";
+          targetPkgs = pkgs: with pkgs; deps.${system} ++ [ sqlite ];
+        };
+
         default = avd;
       });
 
@@ -56,9 +62,19 @@
             '';
           };
 
+          # linux = pkgs.mkShell rec {
+          #   name = "linux";
+          #   buildInputs = with pkgs; deps.${system} ++ [ sqlite ];
+          #   LD_LIBRARY_PATH = "${pkgs.sqlite}/lib";
+            
+          #   shellHook = ''
+          #     export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}
+          #   '';
+          # };
+
           web = pkgs.mkShell rec {
             name = "web";
-            buildInputs = with pkgs; deps ++ [ google-chrome ];
+            buildInputs = with pkgs; deps.${system} ++ [ google-chrome ];
             CHROME_EXECUTABLE = "${pkgs.google-chrome}/bin/google-chrome-stable";
             shellHook = ''
               export CHROME_EXECUTABLE=${CHROME_EXECUTABLE}
