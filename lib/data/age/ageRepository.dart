@@ -7,6 +7,7 @@ class AgeRepository {
   final _cache = AgeCache();
   final _api = Agifyio();
 
+  /// Throws an [Exception] In case there is no one with that name (in the selected country)
   Future<AgeData> getAge({required String name, String? country}) async {
     try {
       return _cachedGetAge(name: name, country: country);
@@ -25,11 +26,20 @@ class AgeRepository {
     return apiAge;
   }
 
+  /// Throws an [Exception] In case there is no one with that name (in the selected countries)
   Future<AgeData> getAgeInCountries(
       {required String name, required List<String> countries}) async {
-    final countryAges = await Future.wait(countries
-        .map((country) => getAge(name: name, country: country))
-        .toList());
+    final countryAges = (await Future.wait(countries.map((country) async {
+      try {
+        return await getAge(name: name, country: country);
+      } catch (e) {
+        return null;
+      }
+    }).toList()))
+        .whereType<AgeData>();
+    if (countryAges.isEmpty) {
+      throw Exception('No data found for $name in any of the countries');
+    }
     return countryAges.reduce((a, b) {
       final totalCount = a.count + b.count;
       // print('totalCount: $totalCount, a: ${a.count}, b: ${b.count}');
