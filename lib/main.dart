@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       themeMode: ThemeMode.dark,
-      home: HomePage(title: 'Flutter Demo Home Page'),
+      home: HomePage(),
     );
   }
 }

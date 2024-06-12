@@ -21,7 +21,7 @@ AgeData _$AgeDataFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AgeData {
   String get name => throw _privateConstructorUsedError;
-  @JsonKey(name: 'country_id')
+  @JsonKey(name: countryKey)
   String get country => throw _privateConstructorUsedError;
   num get age => throw _privateConstructorUsedError;
   int get count => throw _privateConstructorUsedError;
@@ -38,7 +38,7 @@ abstract class $AgeDataCopyWith<$Res> {
   @useResult
   $Res call(
       {String name,
-      @JsonKey(name: 'country_id') String country,
+      @JsonKey(name: countryKey) String country,
       num age,
       int count});
 }
@@ -91,7 +91,7 @@ abstract class _$$AgeDataImplCopyWith<$Res> implements $AgeDataCopyWith<$Res> {
   @useResult
   $Res call(
       {String name,
-      @JsonKey(name: 'country_id') String country,
+      @JsonKey(name: countryKey) String country,
       num age,
       int count});
 }
@@ -138,7 +138,7 @@ class __$$AgeDataImplCopyWithImpl<$Res>
 class _$AgeDataImpl implements _AgeData {
   const _$AgeDataImpl(
       {required this.name,
-      @JsonKey(name: 'country_id') required this.country,
+      @JsonKey(name: countryKey) this.country = worldCountry,
       required this.age,
       required this.count});
 
@@ -148,7 +148,7 @@ class _$AgeDataImpl implements _AgeData {
   @override
   final String name;
   @override
-  @JsonKey(name: 'country_id')
+  @JsonKey(name: countryKey)
   final String country;
   @override
   final num age;
@@ -192,7 +192,7 @@ class _$AgeDataImpl implements _AgeData {
 abstract class _AgeData implements AgeData {
   const factory _AgeData(
       {required final String name,
-      @JsonKey(name: 'country_id') required final String country,
+      @JsonKey(name: countryKey) final String country,
       required final num age,
       required final int count}) = _$AgeDataImpl;
 
@@ -201,7 +201,7 @@ abstract class _AgeData implements AgeData {
   @override
   String get name;
   @override
-  @JsonKey(name: 'country_id')
+  @JsonKey(name: countryKey)
   String get country;
   @override
   num get age;

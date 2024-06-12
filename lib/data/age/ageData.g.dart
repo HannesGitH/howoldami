@@ -9,7 +9,7 @@ part of 'ageData.dart';
 _$AgeDataImpl _$$AgeDataImplFromJson(Map<String, dynamic> json) =>
     _$AgeDataImpl(
       name: json['name'] as String,
-      country: json['country_id'] as String,
+      country: json['country_id'] as String? ?? worldCountry,
       age: json['age'] as num,
       count: (json['count'] as num).toInt(),
     );

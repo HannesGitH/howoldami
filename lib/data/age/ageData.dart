@@ -6,12 +6,13 @@ part 'ageData.freezed.dart';
 part 'ageData.g.dart';
 
 const countryKey = 'country_id';
+const worldCountry = 'WORLD';
 
 @freezed
 class AgeData with _$AgeData {
   const factory AgeData({
     required String name,
-    @JsonKey(name: countryKey) required String country,
+    @JsonKey(name: countryKey) @Default(worldCountry) String country,
     required num age,
     required int count,
   }) = _AgeData;

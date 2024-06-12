@@ -8,7 +8,7 @@ import 'package:sqflite/sqflite.dart';
 
 class AgeCache {
   static const noCountry =
-      'WORLDWIDE'; // yes it could simply be left null, but this is more explicit
+      worldCountry; // yes it could simply be left null, but this is more explicit
   FutureOr<Database> get database async =>
       _database ??
       openDatabase(
