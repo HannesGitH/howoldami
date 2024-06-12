@@ -5,10 +5,11 @@ import 'package:http/http.dart' as http;
 class Agifyio {
   static const String baseUrl = 'https://api.agify.io';
 
-  Future<AgeData> getAge(
-      {required String name, required String country}) async {
-    final response =
-        await http.get(Uri.parse('$baseUrl?name=$name&country_id=$country'));
+  Future<AgeData> getAge({required String name, String? country}) async {
+    final url = country == null
+        ? '$baseUrl?name=$name'
+        : '$baseUrl?name=$name&country_id=$country';
+    final response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       return AgeData.fromJson(jsonDecode(response.body));
     } else {

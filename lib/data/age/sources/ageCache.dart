@@ -7,6 +7,8 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 class AgeCache {
+  static const noCountry =
+      'WORLDWIDE'; // yes it could simply be left null, but this is more explicit
   FutureOr<Database> get database async =>
       _database ??
       openDatabase(
@@ -16,7 +18,7 @@ class AgeCache {
             '''
               CREATE TABLE peoples_age (
                   name TEXT NOT NULL,
-                  $countryKey TEXT NOT NULL,
+                  $countryKey TEXT NOT NULL DEFAULT '$noCountry',
                   age INTEGER NOT NULL,
                   count INTEGER NOT NULL,
                   PRIMARY KEY (name, $countryKey)
@@ -31,13 +33,12 @@ class AgeCache {
       }) as FutureOr<Database>;
   Database? _database;
 
-  Future<AgeData?> getAge(
-      {required String name, required String country}) async {
+  Future<AgeData?> getAge({required String name, String? country}) async {
     final db = await database;
     final List<Map<String, dynamic>> maps = await db.query(
       'peoples_age',
       where: 'name = ? AND $countryKey = ?',
-      whereArgs: [name, country],
+      whereArgs: [name, country ?? noCountry],
     );
     if (maps.isEmpty) {
       return null;
