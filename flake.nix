@@ -24,16 +24,16 @@
 
       android-data = {
         abiVersion = "x86_64";
-        platformVersion = "33";
+        platformVersion = "34";
       };
 
-      # android = forAllSystems (system: spkgs.${system}.androidenv.composeAndroidPackages {
-      #   buildToolsVersions = [ "30.0.3" ];
-      #   platformVersions = [ "28" "31" android-data.platformVersion ];
-      #   abiVersions = [ "armeabi-v7a" "arm64-v8a" android-data.abiVersion ];
-      # });
+      android = forAllSystems (system: spkgs.${system}.androidenv.composeAndroidPackages {
+        buildToolsVersions = [ "30.0.3" ];
+        platformVersions = [ "28" "31" "33" android-data.platformVersion ];
+        abiVersions = [ "armeabi-v7a" "arm64-v8a" android-data.abiVersion ];
+      });
 
-      android = forAllSystems (system: spkgs.${system}.androidenv.androidPkgs_9_0);
+      # android = forAllSystems (system: spkgs.${system}.androidenv.androidPkgs_9_0);
 
       packages = forAllSystems (system:  rec {
         avd = spkgs.${system}.androidenv.emulateApp {
@@ -62,15 +62,15 @@
             '';
           };
 
-          # linux = pkgs.mkShell rec {
-          #   name = "linux";
-          #   buildInputs = with pkgs; deps.${system} ++ [ sqlite ];
-          #   LD_LIBRARY_PATH = "${pkgs.sqlite}/lib";
+          linux = pkgs.mkShell rec {
+            name = "linux";
+            buildInputs = with pkgs; deps.${system} ++ [ sqlite ];
+            LD_LIBRARY_PATH = "${pkgs.sqlite}/lib";
             
-          #   shellHook = ''
-          #     export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}
-          #   '';
-          # };
+            shellHook = ''
+              export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}
+            '';
+          };
 
           web = pkgs.mkShell rec {
             name = "web";

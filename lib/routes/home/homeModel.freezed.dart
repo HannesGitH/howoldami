@@ -16,8 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$HomeState {
-  String get name => throw _privateConstructorUsedError;
-  int? get age => throw _privateConstructorUsedError;
+  AgeData? get age => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HomeStateCopyWith<HomeState> get copyWith =>
@@ -29,7 +28,9 @@ abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
-  $Res call({String name, int? age});
+  $Res call({AgeData? age});
+
+  $AgeDataCopyWith<$Res>? get age;
 }
 
 /// @nodoc
@@ -45,19 +46,26 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
     Object? age = freezed,
   }) {
     return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
       age: freezed == age
           ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as AgeData?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AgeDataCopyWith<$Res>? get age {
+    if (_value.age == null) {
+      return null;
+    }
+
+    return $AgeDataCopyWith<$Res>(_value.age!, (value) {
+      return _then(_value.copyWith(age: value) as $Val);
+    });
   }
 }
 
@@ -69,7 +77,10 @@ abstract class _$$HomeStateImplCopyWith<$Res>
       __$$HomeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, int? age});
+  $Res call({AgeData? age});
+
+  @override
+  $AgeDataCopyWith<$Res>? get age;
 }
 
 /// @nodoc
@@ -83,18 +94,13 @@ class __$$HomeStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
     Object? age = freezed,
   }) {
     return _then(_$HomeStateImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
       age: freezed == age
           ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as AgeData?,
     ));
   }
 }
@@ -102,16 +108,14 @@ class __$$HomeStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$HomeStateImpl implements _HomeState {
-  const _$HomeStateImpl({required this.name, this.age});
+  const _$HomeStateImpl({this.age});
 
   @override
-  final String name;
-  @override
-  final int? age;
+  final AgeData? age;
 
   @override
   String toString() {
-    return 'HomeState(name: $name, age: $age)';
+    return 'HomeState(age: $age)';
   }
 
   @override
@@ -119,12 +123,11 @@ class _$HomeStateImpl implements _HomeState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HomeStateImpl &&
-            (identical(other.name, name) || other.name == name) &&
             (identical(other.age, age) || other.age == age));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, age);
+  int get hashCode => Object.hash(runtimeType, age);
 
   @JsonKey(ignore: true)
   @override
@@ -134,13 +137,10 @@ class _$HomeStateImpl implements _HomeState {
 }
 
 abstract class _HomeState implements HomeState {
-  const factory _HomeState({required final String name, final int? age}) =
-      _$HomeStateImpl;
+  const factory _HomeState({final AgeData? age}) = _$HomeStateImpl;
 
   @override
-  String get name;
-  @override
-  int? get age;
+  AgeData? get age;
   @override
   @JsonKey(ignore: true)
   _$$HomeStateImplCopyWith<_$HomeStateImpl> get copyWith =>
