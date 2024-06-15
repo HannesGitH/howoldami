@@ -85,6 +85,12 @@ extension ToCountry on nc.Country {
       cp.CountryParser.tryParse(name)?.toJson());
 }
 
+// misc utils for other parts of the app
+
 extension FlagIconWidget on Country {
   Widget get icon => Text(flagEmoji);
+}
+
+extension CountryGetters on Iterable<Country> {
+  Iterable<String> get codes => map((c) => c.countryCode);
 }
