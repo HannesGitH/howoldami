@@ -43,7 +43,7 @@ class _NameInputState extends State<NameInput> {
             : Theme.of(context).colorScheme.primary.withOpacity(0.05),
         borderRadius: BorderRadius.circular(10),
       ),
-      margin: const EdgeInsets.all(8.0),
+      // margin: const EdgeInsets.all(8.0),
       child: TextField(
         onSubmitted: widget.onSubmitted,
         decoration: InputDecoration(

@@ -15,5 +15,6 @@
   },
   "name_label": "Name",
   "name_task": "Gib einen Namen ein",
-  "title": "Alter berechnen"
+  "title": "Alter berechnen",
+  "error_loading_age": "Das alter des Namens herauszufinden ist leider fehlgeschlagen, probiere doch mal ein anderen Namen."
 }

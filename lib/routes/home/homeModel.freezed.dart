@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$HomeState {
   AgeData? get age => throw _privateConstructorUsedError;
+  Progress get progress => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HomeStateCopyWith<HomeState> get copyWith =>
@@ -28,7 +29,7 @@ abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
-  $Res call({AgeData? age});
+  $Res call({AgeData? age, Progress progress});
 
   $AgeDataCopyWith<$Res>? get age;
 }
@@ -47,12 +48,17 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   @override
   $Res call({
     Object? age = freezed,
+    Object? progress = null,
   }) {
     return _then(_value.copyWith(
       age: freezed == age
           ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as AgeData?,
+      progress: null == progress
+          ? _value.progress
+          : progress // ignore: cast_nullable_to_non_nullable
+              as Progress,
     ) as $Val);
   }
 
@@ -77,7 +83,7 @@ abstract class _$$HomeStateImplCopyWith<$Res>
       __$$HomeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AgeData? age});
+  $Res call({AgeData? age, Progress progress});
 
   @override
   $AgeDataCopyWith<$Res>? get age;
@@ -95,12 +101,17 @@ class __$$HomeStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? age = freezed,
+    Object? progress = null,
   }) {
     return _then(_$HomeStateImpl(
       age: freezed == age
           ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as AgeData?,
+      progress: null == progress
+          ? _value.progress
+          : progress // ignore: cast_nullable_to_non_nullable
+              as Progress,
     ));
   }
 }
@@ -108,14 +119,17 @@ class __$$HomeStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$HomeStateImpl implements _HomeState {
-  const _$HomeStateImpl({this.age});
+  const _$HomeStateImpl({this.age, this.progress = Progress.initial});
 
   @override
   final AgeData? age;
+  @override
+  @JsonKey()
+  final Progress progress;
 
   @override
   String toString() {
-    return 'HomeState(age: $age)';
+    return 'HomeState(age: $age, progress: $progress)';
   }
 
   @override
@@ -123,11 +137,13 @@ class _$HomeStateImpl implements _HomeState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HomeStateImpl &&
-            (identical(other.age, age) || other.age == age));
+            (identical(other.age, age) || other.age == age) &&
+            (identical(other.progress, progress) ||
+                other.progress == progress));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, age);
+  int get hashCode => Object.hash(runtimeType, age, progress);
 
   @JsonKey(ignore: true)
   @override
@@ -137,10 +153,13 @@ class _$HomeStateImpl implements _HomeState {
 }
 
 abstract class _HomeState implements HomeState {
-  const factory _HomeState({final AgeData? age}) = _$HomeStateImpl;
+  const factory _HomeState({final AgeData? age, final Progress progress}) =
+      _$HomeStateImpl;
 
   @override
   AgeData? get age;
+  @override
+  Progress get progress;
   @override
   @JsonKey(ignore: true)
   _$$HomeStateImplCopyWith<_$HomeStateImpl> get copyWith =>

@@ -29,6 +29,7 @@ class AgeRepository {
   /// Throws an [Exception] In case there is no one with that name (in the selected countries)
   Future<AgeData> getAgeInCountries(
       {required String name, required List<String> countries}) async {
+    if (countries.isEmpty) return getAge(name: name);
     final countryAges = (await Future.wait(countries.map((country) async {
       try {
         return await getAge(name: name, country: country);
