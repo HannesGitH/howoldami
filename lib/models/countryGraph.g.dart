@@ -7,7 +7,7 @@ part of 'countryGraph.dart';
 // **************************************************************************
 
 String _$selectedCountriesModelHash() =>
-    r'e191a39b1d65a234a57d985e13da44fb1b049051';
+    r'9702295b2a0491db20b834fdb77d24b02fb9fdf8';
 
 /// See also [SelectedCountriesModel].
 @ProviderFor(SelectedCountriesModel)

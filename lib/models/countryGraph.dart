@@ -20,6 +20,7 @@ class SelectedCountriesModel extends _$SelectedCountriesModel {
   }
 
   void _graphListener(countries) {
+    debugPrint('got new neighbors');
     state = state.copyWith(suggestions: _asCountries(countries));
   }
 
@@ -46,6 +47,10 @@ class SelectedCountriesModel extends _$SelectedCountriesModel {
   }
 
   void search(String query) {
+    if (query.isEmpty) {
+      clearSearch();
+      return;
+    }
     final suggestions = state.possible
         .where((c) => c.name.toLowerCase().contains(query.toLowerCase()));
     state = state.copyWith(suggestions: suggestions);
@@ -56,9 +61,9 @@ class SelectedCountriesModel extends _$SelectedCountriesModel {
     _graphListener(graph.currentNeighbors);
   }
 
-  @deprecated
   void clearSelection() {
     state = state.copyWith(selection: []);
+    graph.clearSelection();
   }
 }
 
