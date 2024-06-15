@@ -10,7 +10,7 @@ class AgeRepository {
   /// Throws an [Exception] In case there is no one with that name (in the selected country)
   Future<AgeData> getAge({required String name, String? country}) async {
     try {
-      return _cachedGetAge(name: name, country: country);
+      return await _cachedGetAge(name: name, country: country);
     } catch (e) {
       return _api.getAge(name: name, country: country);
     }
