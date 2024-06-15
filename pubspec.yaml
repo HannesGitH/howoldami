@@ -50,6 +50,7 @@ dependencies:
   http: ^1.1.0
   sqflite_common_ffi: ^2.3.0+4
   sqflite_common_ffi_web: ^0.4.2+1
+  country_picker: ^2.0.23
     # git:
     #   url: https://github.com/hannesgith/neighboring_countries.git
     #   ref: main

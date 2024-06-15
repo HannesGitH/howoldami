@@ -1,4 +1,4 @@
-// this might be against agifys TOS
+// this might be against agify's TOS
 
 import 'dart:async';
 
