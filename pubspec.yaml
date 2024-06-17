@@ -44,7 +44,8 @@ dependencies:
   intl: any
 
   neighboring_countries:
-    path: ../../neighboring_countries
+    git:
+      url: https://github.com/hannesgith/neighboring_countries.git
   sqflite: ^2.3.2
   path: ^1.8.3
   http: ^1.1.0

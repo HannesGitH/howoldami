@@ -459,9 +459,11 @@ packages:
   neighboring_countries:
     dependency: "direct main"
     description:
-      path: "../../neighboring_countries"
-      relative: true
-    source: path
+      path: "."
+      ref: HEAD
+      resolved-ref: "9962cf18ba9f8825ea5d050e96c68acd9cafe13a"
+      url: "https://github.com/hannesgith/neighboring_countries.git"
+    source: git
     version: "1.0.0"
   node_preamble:
     dependency: transitive
